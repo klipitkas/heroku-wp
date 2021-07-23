@@ -23,10 +23,6 @@ Heroku WP uses the following addons:
 - [MariaDB](https://mariadb.org) / [jawsdb-maria](https://elements.heroku.com/addons/jawsdb-maria) - A binary compatible MySQL replacement with even better performance.
 - [Redis](http://redis.io) / [heroku-redis](https://elements.heroku.com/addons/heroku-redis) - An in-memory datastore for fast persistant object cache.
 
-And optionally the following addons:
-
-- [SendGrid](https://sendgrid.com) / [sendgrid](https://elements.heroku.com/addons/sendgrid) - SaaS email delivery service.
-
 In addition repository comes bundled with the following tools and must use plugins.
 
 - [WP-CLI](http://wp-cli.org) - For simple management of your WP install.

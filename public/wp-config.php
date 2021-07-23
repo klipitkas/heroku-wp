@@ -111,13 +111,6 @@ foreach ($_dbsslpaths as $_dbsslpath) {
 unset($_dbsettings, $_dbflags, $_dbsslpaths, $_dbsslpath);
 
 /**
- * SendGrid settings.
- */
-if (!empty($_ENV['SENDGRID_API_KEY'])) {
-	define('SENDGRID_API_KEY', $_ENV['SENDGRID_API_KEY']);
-}
-
-/**
  * S3-Uploads settings
  *
  * AWS_S3_URL should be in the form of one of the following:
