@@ -70,8 +70,8 @@ if (isset($_ENV['WP_DB_URL'])) {
 	if (empty($_ENV['MYSQL_SSL_CA'])) {
 		$_ENV['MYSQL_SSL_CA'] = 'rds-combined-ca-bundle.pem';
 	}
-} elseif (isset($_ENV['CLEARDB_DATABASE_URL'])) {
-	$_dbsettings = parse_url($_ENV['CLEARDB_DATABASE_URL']);
+} elseif (isset($_ENV['JAWSDB_MARIA_URL'])) {
+	$_dbsettings = parse_url($_ENV['JAWSDB_MARIA_URL']);
 
 	// Use ClearDB CA for Clear DB
 	if (empty($_ENV['MYSQL_SSL_CA'])) {
