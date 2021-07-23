@@ -14,6 +14,9 @@ mkdir -p public.built
 mv public.built tmp/public.old && mv tmp/public.building public.built
 rm -rf tmp/public.old
 
+# Cleanup hello dolly plugin
+rm -f public.built/wp-content/plugins/hello.php
+
 # Remove files to slim down slug if we're on Heroku
 if [ ! -e .sluglocal ]
 then
