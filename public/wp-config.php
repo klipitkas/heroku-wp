@@ -39,12 +39,12 @@ if (!empty($_ENV['REDIS_URL'])) {
 	$_redissettings = parse_url($_ENV['REDIS_URL']);
 
 	define('WP_CACHE', true);
-	define('WP_REDIS_CLIENT',   'predis');
-	define('WP_REDIS_SCHEME',   $_redissettings['scheme']);
-	define('WP_REDIS_HOST',     $_redissettings['host']);
-	define('WP_REDIS_PORT',     $_redissettings['port']);
+	define('WP_REDIS_CLIENT', 'predis');
+	define('WP_REDIS_SCHEME', $_redissettings['scheme']);
+	define('WP_REDIS_HOST', $_redissettings['host']);
+	define('WP_REDIS_PORT', $_redissettings['port']);
 	define('WP_REDIS_PASSWORD', $_redissettings['pass']);
-	define('WP_REDIS_MAXTTL',   2419200 /* 28 days */);
+	define('WP_REDIS_MAXTTL', 2419200 /* 28 days */);
 
 	unset($_redissettings);
 }
@@ -74,18 +74,17 @@ if (isset($_ENV['JAWSDB_MARIA_URL'])) {
 	$_dbsettings = parse_url('mysql://herokuwp:password@127.0.0.1/herokuwp');
 }
 
-define('DB_NAME',              trim($_dbsettings['path'], '/'));
-define('DB_USER',              $_dbsettings['user']);
-define('DB_PASSWORD',          $_dbsettings['pass']);
+define('DB_NAME', trim($_dbsettings['path'], '/'));
+define('DB_USER', $_dbsettings['user']);
+define('DB_PASSWORD', $_dbsettings['pass']);
 if (array_key_exists('port', $_dbsettings)) {
 	define('DB_HOST', $_dbsettings['host'] . ':' . $_dbsettings['port']);
 } else {
 	define('DB_HOST', $_dbsettings['host']);
 }
-define('DB_CHARSET',           'utf8');
-define('DB_COLLATE',           '');
-define('WP_USE_EXT_MYSQL',     false /* Always use MySQLi */);
-define('MYSQL_CLIENT_FLAGS',   $_dbflags);
+define('DB_CHARSET', 'utf8');
+define('DB_COLLATE', '');
+define('MYSQL_CLIENT_FLAGS', $_dbflags);
 
 // Set client keys and certs for X509 auth or explicit server CA if they exist in ENV vars
 $_dbsslpaths = array(
@@ -106,9 +105,9 @@ unset($_dbsettings, $_dbflags, $_dbsslpaths, $_dbsslpath);
  * S3-Uploads settings
  *
  * AWS_S3_URL should be in the form of one of the following:
- *   s3://KEY:SECRET@s3.amazonaws.com/BUCKET
- *   s3://KEY:SECRET@s3-REGION.amazonaws.com/BUCKET (with optional region)
- *   s3://KEY:SECRET@s3.amazonaws.com/BUCKET?url=https://example.com (to set a prettier bucket URL / alias)
+ *s3://KEY:SECRET@s3.amazonaws.com/BUCKET
+ *s3://KEY:SECRET@s3-REGION.amazonaws.com/BUCKET (with optional region)
+ *s3://KEY:SECRET@s3.amazonaws.com/BUCKET?url=https://example.com (to set a prettier bucket URL / alias)
  */
 if (!empty($_ENV['AWS_S3_URL'])) {
 	$_awssettings = array();
@@ -131,7 +130,7 @@ if (!empty($_ENV['AWS_S3_URL'])) {
 		);
 	}
 
-	define('S3_UPLOADS_KEY',    urldecode($_awssettings['user']));
+	define('S3_UPLOADS_KEY', urldecode($_awssettings['user']));
 	define('S3_UPLOADS_SECRET', urldecode($_awssettings['pass']));
 	define('S3_UPLOADS_BUCKET', trim($_awssettings['path'], '/'));
 
@@ -193,7 +192,7 @@ if (isset($_ENV['DISABLE_WP_CRON']) && 'TRUE' == $_ENV['DISABLE_WP_CRON']) {
  * You can have multiple installations in one database if you give each a unique
  * prefix. Only numbers, letters, and underscores please!
  */
-$table_prefix  = 'wp_';
+$table_prefix = 'wp_';
 
 /**
  * WordPress Localized Language, defaults to English.
