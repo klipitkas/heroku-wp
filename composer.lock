@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cf8ee7e7d18fc0095297996bbac469b4",
+    "content-hash": "8b3ba33eff2037d4a451a197923d886e",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1049,10 +1049,10 @@
         },
         {
             "name": "wordpress/wordpress",
-            "version": "5.2.3",
+            "version": "5.8.0",
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/wordpress/wordpress/archive/5.2.3.zip"
+                "url": "https://github.com/WordPress/WordPress/archive/refs/tags/5.8.zip"
             },
             "type": "library"
         },

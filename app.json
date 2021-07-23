@@ -80,5 +80,5 @@
       "as": "WP_DB"
     }
   ],
-  "stack": "heroku-18"
+  "stack": "heroku-20"
 }
