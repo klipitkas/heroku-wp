@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f50cef9b1075e81006b443c8cc3bdb20",
+    "content-hash": "0127b5e0506b4a9b779317e2823e367d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1277,24 +1277,6 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/secure-db-connection/"
-        },
-        {
-            "name": "wpackagist-plugin/wp-graphql",
-            "version": "1.5.5",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/wp-graphql/",
-                "reference": "tags/1.5.5"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/wp-graphql.1.5.5.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/wp-graphql/"
         }
     ],
     "packages-dev": [],

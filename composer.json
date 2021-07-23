@@ -16,7 +16,6 @@
     "php": "7.*",
     "wordpress/wordpress": "*",
     "wpackagist-plugin/redis-cache": "^2.0",
-    "wpackagist-plugin/wp-graphql": "^1.5",
     "wpackagist-plugin/secure-db-connection": "^1.1",
     "humanmade/s3-uploads": "^3.0",
     "predis/predis": "^1.1",
@@ -51,8 +50,7 @@
     "installer-paths": {
       "vendor/wordpress/wordpress-ext/wp-content/mu-plugins/{$name}/": [
         "wpackagist-plugin/redis-cache",
-        "wpackagist-plugin/secure-db-connection",
-        "wpackagist-plugin/wp-graphql"
+        "wpackagist-plugin/secure-db-connection"
       ],
       "vendor/wordpress/wordpress-ext/wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
