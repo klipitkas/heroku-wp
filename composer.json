@@ -51,8 +51,7 @@
     "installer-paths": {
       "vendor/wordpress/wordpress-ext/wp-content/mu-plugins/{$name}/": [
         "wpackagist-plugin/redis-cache",
-        "wpackagist-plugin/secure-db-connection",
-        "wpackagist-plugin/wp-mail-smtp"
+        "wpackagist-plugin/secure-db-connection"
       ],
       "vendor/wordpress/wordpress-ext/wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
