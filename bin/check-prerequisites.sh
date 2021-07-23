@@ -49,7 +49,7 @@ type heroku >/dev/null 2>&1 || {
 }
 
 heroku auth:whoami >/dev/null 2>&1 || {
-	echo "Running 'heroku auth:login' to authente account..."
+	echo "Running 'heroku auth:login' to authenticate account..."
 	heroku auth:login
 	heroku auth:whoami >/dev/null 2>&1 || {
 		echo >&2 "Heroku account required."
