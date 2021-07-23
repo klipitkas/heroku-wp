@@ -52,7 +52,7 @@ if (!empty($_ENV['REDIS_URL'])) {
 /**
  * MySQL settings.
  *
- * We are getting Heroku ClearDB settings from Heroku Environment Vars
+ * We are getting Heroku JawsDB settings from Heroku Environment Vars
  */
 
 // MySQL settings: always compress
@@ -63,22 +63,13 @@ if (isset($_ENV['WP_DB_SSL']) && 'ON' == $_ENV['WP_DB_SSL']) {
 	$_dbflags |= MYSQLI_CLIENT_SSL;
 }
 
-if (isset($_ENV['WP_DB_URL'])) {
-	$_dbsettings = parse_url($_ENV['WP_DB_URL']);
+if (isset($_ENV['JAWSDB_MARIA_URL'])) {
+	$_dbsettings = parse_url($_ENV['JAWSDB_MARIA_URL']);
 
-	// Use RDS CA for Jaws DB / most default installs
+	// Use the proper CA file for JawsDB.
 	if (empty($_ENV['MYSQL_SSL_CA'])) {
 		$_ENV['MYSQL_SSL_CA'] = 'rds-combined-ca-bundle.pem';
 	}
-} elseif (isset($_ENV['JAWSDB_MARIA_URL'])) {
-	$_dbsettings = parse_url($_ENV['JAWSDB_MARIA_URL']);
-
-	// Use ClearDB CA for Clear DB
-	if (empty($_ENV['MYSQL_SSL_CA'])) {
-		$_ENV['MYSQL_SSL_CA'] = 'cleardb-ca.pem';
-	}
-	// ClearDB signs with an invalid CN
-	$_dbflags |= MYSQLI_CLIENT_SSL_DONT_VERIFY_SERVER_CERT;
 } else {
 	$_dbsettings = parse_url('mysql://herokuwp:password@127.0.0.1/herokuwp');
 }
@@ -102,6 +93,7 @@ $_dbsslpaths = array(
 	'MYSQL_SSL_CERT',
 	'MYSQL_SSL_CA'
 );
+
 foreach ($_dbsslpaths as $_dbsslpath) {
 	if (!empty($_ENV[$_dbsslpath])) {
 		define($_dbsslpath, '/app/support/mysql-certs/' . $_ENV[$_dbsslpath]);
