@@ -19,7 +19,8 @@
     "wpackagist-plugin/secure-db-connection": "^1.1",
     "humanmade/s3-uploads": "^2.0",
     "predis/predis": "^1.1",
-    "wp-cli/wp-cli": "^2.5"
+    "wp-cli/wp-cli": "^2.5",
+    "wpackagist-plugin/wp-mail-smtp": "^2.9"
   },
   "suggest": {
     "wpackagist-plugin/cloudflare-cache-purge": "Purges cached pages on CF.",
@@ -50,7 +51,8 @@
     "installer-paths": {
       "vendor/wordpress/wordpress-ext/wp-content/mu-plugins/{$name}/": [
         "wpackagist-plugin/redis-cache",
-        "wpackagist-plugin/secure-db-connection"
+        "wpackagist-plugin/secure-db-connection",
+        "wpackagist-plugin/wp-mail-smtp"
       ],
       "vendor/wordpress/wordpress-ext/wp-content/plugins/{$name}/": [
         "type:wordpress-plugin"
