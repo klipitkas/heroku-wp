@@ -18,7 +18,6 @@
     "wpackagist-plugin/redis-cache": "~1",
     "wpackagist-plugin/secure-db-connection": "~1",
     "humanmade/s3-uploads": "~2",
-    "wpackagist-plugin/jetpack": "*",
     "predis/predis": "~1",
     "wp-cli/wp-cli": "^2"
   },

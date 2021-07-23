@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8b3ba33eff2037d4a451a197923d886e",
+    "content-hash": "021e5d837320a2f6455ea1e703449280",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1231,24 +1231,6 @@
                 "source": "https://github.com/wp-cli/wp-cli"
             },
             "time": "2021-05-14T13:44:51+00:00"
-        },
-        {
-            "name": "wpackagist-plugin/jetpack",
-            "version": "9.9.1",
-            "source": {
-                "type": "svn",
-                "url": "https://plugins.svn.wordpress.org/jetpack/",
-                "reference": "tags/9.9.1"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/jetpack.9.9.1.zip"
-            },
-            "require": {
-                "composer/installers": "~1.0"
-            },
-            "type": "wordpress-plugin",
-            "homepage": "https://wordpress.org/plugins/jetpack/"
         },
         {
             "name": "wpackagist-plugin/redis-cache",

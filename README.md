@@ -31,9 +31,7 @@ In addition repository comes bundled with the following tools and must use plugi
 
 Finally these plugins are pre-installed as they are highly recommended but not activated.
 
-- [Jetpack](http://jetpack.me/)
 - [S3 Uploads](https://github.com/humanmade/S3-Uploads)
-- [SendGrid](http://wordpress.org/plugins/sendgrid-email-delivery-simplified/)
 
 WordPress and most included plugins are installed by Composer on build. To add new plugins or upgrade versions of plugins simply update the `composer.json` file and then generate the `composer.lock` file with the following command locally:
 
