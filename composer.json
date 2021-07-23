@@ -14,7 +14,7 @@
   "require": {
     "ext-gd": "*",
     "php": "7.*",
-    "wordpress/wordpress": "*",
+    "wordpress/wordpress": "^5.8",
     "wpackagist-plugin/redis-cache": "^2.0",
     "wpackagist-plugin/secure-db-connection": "^1.1",
     "humanmade/s3-uploads": "^3.0",
