@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "021e5d837320a2f6455ea1e703449280",
+    "content-hash": "f50cef9b1075e81006b443c8cc3bdb20",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -481,23 +481,33 @@
         },
         {
             "name": "humanmade/s3-uploads",
-            "version": "2.3.0",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/humanmade/S3-Uploads.git",
-                "reference": "3b995ba6d1ccde4354efb9564c3e244f871bbcda"
+                "reference": "d47a5962fcd383047a140c099a8100c716b8a434"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/humanmade/S3-Uploads/zipball/3b995ba6d1ccde4354efb9564c3e244f871bbcda",
-                "reference": "3b995ba6d1ccde4354efb9564c3e244f871bbcda",
+                "url": "https://api.github.com/repos/humanmade/S3-Uploads/zipball/d47a5962fcd383047a140c099a8100c716b8a434",
+                "reference": "d47a5962fcd383047a140c099a8100c716b8a434",
                 "shasum": ""
             },
             "require": {
                 "aws/aws-sdk-php": "~3.18",
                 "composer/installers": "~1.0"
             },
+            "require-dev": {
+                "humanmade/psalm-plugin-wordpress": "^1.0",
+                "pcov/clobber": "^2.0",
+                "phpunit/phpunit": "7.5"
+            },
             "type": "wordpress-plugin",
+            "autoload": {
+                "classmap": [
+                    "./inc"
+                ]
+            },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "GPL-2.0+"
@@ -518,7 +528,7 @@
                 "issues": "https://github.com/humanmade/s3-uploads/issues",
                 "source": "https://github.com/humanmade/s3-uploads"
             },
-            "time": "2021-03-18T10:55:13+00:00"
+            "time": "2021-06-16T18:17:34+00:00"
         },
         {
             "name": "mtdowling/jmespath.php",
@@ -1234,15 +1244,15 @@
         },
         {
             "name": "wpackagist-plugin/redis-cache",
-            "version": "1.6.3",
+            "version": "2.0.21",
             "source": {
                 "type": "svn",
                 "url": "https://plugins.svn.wordpress.org/redis-cache/",
-                "reference": "tags/1.6.3"
+                "reference": "tags/2.0.21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://downloads.wordpress.org/plugin/redis-cache.1.6.3.zip"
+                "url": "https://downloads.wordpress.org/plugin/redis-cache.2.0.21.zip"
             },
             "require": {
                 "composer/installers": "~1.0"
@@ -1267,6 +1277,24 @@
             },
             "type": "wordpress-plugin",
             "homepage": "https://wordpress.org/plugins/secure-db-connection/"
+        },
+        {
+            "name": "wpackagist-plugin/wp-graphql",
+            "version": "1.5.5",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/wp-graphql/",
+                "reference": "tags/1.5.5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/wp-graphql.1.5.5.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/wp-graphql/"
         }
     ],
     "packages-dev": [],
