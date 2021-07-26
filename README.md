@@ -2,14 +2,6 @@
 
 This is a template for installing and running [WordPress](http://wordpress.org/) on [Heroku](http://www.heroku.com/) with a focus on speed and security while using the official Heroku stack.
 
-## Spin Up a Demo
-
-Want to give it a try first? Deploy a demo to your account:
-
-[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/xyu/heroku-wp/tree/button)
-
-_For production setups it's highly recommended to follow the instructions below to properly install and version control with your own repo._
-
 ## About
 
 The repository is built on top of the standard Heroku PHP buildpack so you don't need to trust some sketchy 3rd party s3 bucket.
@@ -35,36 +27,9 @@ Finally these plugins are pre-installed as they are highly recommended but not a
 
 WordPress and most included plugins are installed by Composer on build. To add new plugins or upgrade versions of plugins simply update the `composer.json` file and then generate the `composer.lock` file with the following command locally:
 
-```bash
-$ bin/composer update --ignore-platform-reqs
-```
+    composer update --ignore-platform-reqs
 
 To add local plugins and themes, you can create `plugins/` and `themes/` folders inside `/public/wp-content` which upon deploy to Heroku will be copied on top of the standard WordPress install, themes, and plugins specified by Composer.
-
-## Installation
-
-Make sure you have the [Heroku Toolbelt](https://toolbelt.heroku.com/) installed and configured for your account. This provides the `heroku` CLI tool for creating and managing your Heroku apps.
-
-Clone the repository from Github
-
-    $ git clone https://github.com/xyu/heroku-wp.git
-
-Run the included init script
-
-    $ cd heroku-wp && bin/init.sh my-app-name
-
-Use WP-CLI to install the DB and set initial settings
-
-    $ heroku run wp core install \
-      --url=my-app-name.herokuapp.com \
-      --title="WordPress on Heroku" \
-      --admin_user="admin" \
-      --admin_password="correct-horse-battery-staple" \
-      --admin_email="info@example.com"
-
-## Optional Installation
-
-Installing and configuring the items below are not essential to get a working WordPress install but will make your site more functional and secure.
 
 ### Media Uploads
 
@@ -72,55 +37,49 @@ Installing and configuring the items below are not essential to get a working Wo
 
 To activate this plugin:
 
-1. First set your S3 credentials via Heroku configs with AWS S3 path-style URLs. It's best practices to URL encode your AWS key and secret, (e.g. use `%2B` for `+` and `%2F` for `/`,) however non URL encoded values should still work even if they are invalid URLs.
+First set your S3 credentials via Heroku configs with AWS S3 path-style URLs. It's best practices to URL encode your AWS key and secret, (e.g. use `%2B` for `+` and `%2F` for `/`,) however non URL encoded values should still work even if they are invalid URLs.
 
-   $ heroku config:set \
-    AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3.amazonaws.com/{AWS_BUCKET}"
+    heroku config:set AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3.amazonaws.com/{AWS_BUCKET}"
 
-   If you would like to set the optional region for your S3 bucket use the region-specific endpoint.
+If you would like to set the optional region for your S3 bucket use the region-specific endpoint.
 
-   $ heroku config:set \
-    AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}"
+    heroku config:set AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}"
 
-   For example, if your bucket is in the South America (São Paulo) region use:
+For example, if your bucket is in the South America (São Paulo) region use:
 
-   $ heroku config:set \
-    AWS_S3_URL="s3://my-key:my-secret@s3-sa-east-1.amazonaws.com/my-bucket"
+    heroku config:set AWS_S3_URL="s3://my-key:my-secret@s3-sa-east-1.amazonaws.com/my-bucket"
 
-   If you would like to use a custom bucket URL either because you are proxying the requests or if you are using a domain for the bucket name you can do so by setting a custom url param:
+If you would like to use a custom bucket URL either because you are proxying the requests or if you are using a domain for the bucket name you can do so by setting a custom url param:
 
-   $ heroku config:set \
-    AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}?url={BUCKET_URL}"
+    heroku config:set AWS_S3_URL="s3://{AWS_KEY}:{AWS_SECRET}@s3-{AWS_REGION}.amazonaws.com/{AWS_BUCKET}?url={BUCKET_URL}"
 
-   The `BUCKET_URL` should have a scheme attached, e.g.:
+The `BUCKET_URL` should have a scheme attached, e.g.:
 
-   $ heroku config:set \
-    AWS_S3_URL="s3://my-key:my-secret@s3-sa-east-1.amazonaws.com/my-bucket?url=https://static.example.com"
+    heroku config:set AWS_S3_URL="s3://my-key:my-secret@s3-sa-east-1.amazonaws.com/my-bucket?url=https://static.example.com"
 
-2. Then activate the plugin in WP Admin.
+Then activate the plugin in WP Admin.
 
-### Securing Your MySQL Connection (X509 auth or custom CAs only)
+### Securing the database connection using an SSL certificate
 
-This repo already comes with both the ClearDB and Amazon RDS root CAs installed for secure DB connections. To turn on SSL simply set the `WP_DB_SSL` config. (We default to secured so this is already set to `ON` by `init.sh`.)
+This repo already comes with the Amazon RDS root CAs installed for securing DB connections.
 
-    $ heroku config:set WP_DB_SSL="ON"
+To turn on SSL simply set the `WP_DB_SSL` config.
+
+    heroku config:set WP_DB_SSL="ON"
 
 If you use another MySQL database and have a self signed cert you can add the self signed CA to the trusted store by committing it to `/support/mysql-certs` and setting the filenames or explicitly setting it in the ENV config itself:
 
-    $ heroku config:set \
-        MYSQL_SSL_CA="$(cat /path/to/server-ca.pem)"
-
-In addition if your MySQL server requires X509 auth in addition to the username/password you can set the client cert and private key through the use of ENV vars like so (be sure to use RSA keys):
-
-    $ heroku config:set
-        MYSQL_SSL_CERT="$(cat /path/to/client-cert.pem)" \
-        MYSQL_SSL_KEY="$(cat /path/to/client-key.pem)"
+    heroku config:set MYSQL_SSL_CA="$(cat /path/to/server-ca.pem)"
 
 ### Offloaded WP Cron
 
 WP Cron relies on visitors to the site to trigger scheduled jobs to run which can be a problem for lightly trafficked sites. Instead we can have an external jobs system (IronWorker) run WP Cron on schedule to provide consistency.
 
-// TODO: Heroku cron
+For this reason Heroku Scheduler is used with a frequency of **10 minutes** along with the following command:
+
+    curl -fsSL https://example.com/wp-cron.php?doing_wp_cron
+
+Where example.com is the domain you are using for your website.
 
 ## Usage
 
@@ -130,25 +89,31 @@ Because a file cannot be written to Heroku's file system, updating and installin
 
 In most cases you may want to have your WordPress blog in a language different than its default (US English). In that case all you need to do is download the .mo and .po files for your language from [wpcentral.io/internationalization](http://wpcentral.io/internationalization/) and place them in the `languages` directory you'll create under `public/wp-content`. Then you should commit changes to your local branch and push them to your heroku remote. After that, you'll be able to select the new language from the WP admin panel.
 
-## Updating
+## Updating WordPress
 
-Updating your WordPress version is just a matter of merging the updates into
-the branch created from the installation.
+In order to update the WordPress installation you need to use composer.
 
-```bash
-    $ git pull                                    # Get the latest updates
-    $ git checkout {SLUG}                         # Checkout the site branch
-    $ git merge origin/master                     # Merge in latest
-    $ bin/composer update --ignore-platform-reqs  # Update composer.lock file
-    $ git push heroku {SLUG}:master               # Deploy to Heroku
-```
+**NOTE: It is highly recommended to make a backup of the database before proceeding.**
+
+Edit the file and change the version of the `wordpress/wordpress` package and then change the zip path and version under:
+
+    {
+        "type": "package",
+        "package": {
+        "name": "wordpress/wordpress",
+        "version": "5.8.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/WordPress/WordPress/archive/refs/tags/5.8.zip"
+        }
+    }
 
 After pushing changes update the WordPress database via WP-CLI:
 
-    $ heroku run wp core update-db
+    $ heroku run wp core update --app <app>
+    Success: WordPress is up to date.
 
-WordPress will prompt for updating the database. After that you'll be good
-to go.
+WordPress will prompt for updating the database. After that you'll be good to go.
 
 ## Custom Domains
 
@@ -157,52 +122,9 @@ Heroku allows you to add custom domains to your site hosted with them. To add yo
     $ heroku domains:add www.example.com
     > Added www.example.com as a custom domain name to myapp.heroku.com
 
-#### Q. Help, nothing is showing up / I've polluted my cache
+### Clean the cache
 
 One of the most common problems is if you make a DB change but still have stale cache refering to the old configs the easiest way to fix this is to use the included WP-CLI tool to flush your Redis cache:
 
-    $ heroku run wp cache flush
-
-## Running Locally
-
-A Vagrant instance to run Heroku WP is included. To get up and running:
-
-- Install Vagrant http://www.vagrantup.com/downloads
-- Install VirtualBox https://www.virtualbox.org/wiki/Downloads
-
-To make your life easier a Vagrant plugin can be used to manage the hosts file.
-
-    $ vagrant plugin install vagrant-hostmanager
-
-If you don't have vagrant-hostmanager installed you'll have to manually update
-your hostfile.
-
-Once installed `cd` into app root directory and run `$ vagrant up` (should start setting up virtual env. go grab some ☕, takes about 10 minutes)
-
-Once Vagrant provisions the VM you will have Heroku WP running locally at `http://herokuwp.local/`. On first load, it should bring you to the WordPress install page. If the site is not accessible in the browser, you might need to add `192.168.50.100 herokuwp.local` to your hosts file manually.
-
-As a convenience both the `/public` dir and `/composer.lock` file will be monitored by the VM. Any changes to either triggers a rebuild process which will result in `/public.built` (the web root) being updated. `/app/support` is also monitored by the VM, changes here will cause Nginx to reload with the new configs.
-
-## Connecting to MySQL on Vagrant Machine
-
-In order to connect you will need to change the MySQL config to work with 0.0.0.0 IP address instead of localhost.
-
-- SSH into the vm `$ vagrant ssh`
-- Open the config file `$ sudo vim /etc/mysql/my.cnf`
-- Change the IP address from 127.0.0.1 to 0.0.0.0
-
-Then you can connect using SSH with the following parameters:
-
-- SSH hostname: 127.0.0.1:2222
-- SSH username: vagrant
-- SSH password: vagrant
-- MySQL hostname: 127.0.0.1
-- MySQL port: 3306
-- mysql user: herokuwp
-- mysql password: password
-
-## If your computer goes to sleep and vagrant is suspended abruptly
-
-Sometimes after `vagrant up` from an aborted state, the vm does not start correctly and the site is not accessible. When this happens force a re-provision of the machine with
-
-    $ vagrant provision
+    $ heroku run wp cache flush --app demo-stateless-wp
+    Success: The cache was flushed.
