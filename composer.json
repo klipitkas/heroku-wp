@@ -19,8 +19,8 @@
     "wpackagist-plugin/secure-db-connection": "^1.1",
     "humanmade/s3-uploads": "^2.0",
     "predis/predis": "^1.1",
-    "wp-cli/wp-cli": "^2.5",
-    "wpackagist-plugin/wp-mail-smtp": "^2.9"
+    "wpackagist-plugin/wp-mail-smtp": "^2.9",
+    "wp-cli/wp-cli-bundle": "^2.5"
   },
   "suggest": {
     "wpackagist-plugin/cloudflare-cache-purge": "Purges cached pages on CF.",
