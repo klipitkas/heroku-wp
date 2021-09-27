@@ -20,7 +20,8 @@
     "humanmade/s3-uploads": "^2.0",
     "predis/predis": "^1.1",
     "wpackagist-plugin/wp-mail-smtp": "^2.9",
-    "wp-cli/wp-cli-bundle": "^2.5"
+    "wp-cli/wp-cli-bundle": "^2.5",
+    "wpackagist-plugin/contact-form-7": "^5.4"
   },
   "suggest": {
     "wpackagist-plugin/cloudflare-cache-purge": "Purges cached pages on CF.",

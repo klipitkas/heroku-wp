@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f67ef5a86a4cbaf1269df81b637be765",
+    "content-hash": "a0a0f24a6976e5b189e895308e785bed",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -5052,6 +5052,24 @@
             "time": "2020-11-12T08:08:10+00:00"
         },
         {
+            "name": "wpackagist-plugin/contact-form-7",
+            "version": "5.4.2",
+            "source": {
+                "type": "svn",
+                "url": "https://plugins.svn.wordpress.org/contact-form-7/",
+                "reference": "tags/5.4.2"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://downloads.wordpress.org/plugin/contact-form-7.5.4.2.zip"
+            },
+            "require": {
+                "composer/installers": "~1.0 || ~2.0"
+            },
+            "type": "wordpress-plugin",
+            "homepage": "https://wordpress.org/plugins/contact-form-7/"
+        },
+        {
             "name": "wpackagist-plugin/redis-cache",
             "version": "2.0.21",
             "source": {
@@ -5117,5 +5135,5 @@
         "php": "7.*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.0.0"
+    "plugin-api-version": "2.1.0"
 }
