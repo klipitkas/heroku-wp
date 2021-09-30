@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "145715d7de1fbab6510022061562ec6d",
+    "content-hash": "e885f7c214fadd6e281ef1466005ce70",
     "packages": [
         {
             "name": "aws/aws-crt-php",
@@ -58,16 +58,16 @@
         },
         {
             "name": "aws/aws-sdk-php",
-            "version": "3.195.2",
+            "version": "3.196.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/aws/aws-sdk-php.git",
-                "reference": "7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102"
+                "reference": "3128df6b0b68b1c4704321777332473642b749e0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102",
-                "reference": "7e0cdfe30ee3cfa2a1494f8e3b4fa5277f118102",
+                "url": "https://api.github.com/repos/aws/aws-sdk-php/zipball/3128df6b0b68b1c4704321777332473642b749e0",
+                "reference": "3128df6b0b68b1c4704321777332473642b749e0",
                 "shasum": ""
             },
             "require": {
@@ -143,9 +143,9 @@
             "support": {
                 "forum": "https://forums.aws.amazon.com/forum.jspa?forumID=80",
                 "issues": "https://github.com/aws/aws-sdk-php/issues",
-                "source": "https://github.com/aws/aws-sdk-php/tree/3.195.2"
+                "source": "https://github.com/aws/aws-sdk-php/tree/3.196.0"
             },
-            "time": "2021-09-29T18:17:19+00:00"
+            "time": "2021-09-30T18:15:45+00:00"
         },
         {
             "name": "composer/ca-bundle",
@@ -1475,6 +1475,15 @@
             "dist": {
                 "type": "zip",
                 "url": "https://github.com/NoeticBlue/disable-frontend/archive/refs/tags/1.0.0.zip"
+            },
+            "type": "wordpress-plugin"
+        },
+        {
+            "name": "noeticblue/vercel-deploy",
+            "version": "1.0.0",
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/NoeticBlue/vercel-deploy/archive/refs/tags/1.0.0.zip"
             },
             "type": "wordpress-plugin"
         },

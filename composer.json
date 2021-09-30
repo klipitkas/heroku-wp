@@ -19,10 +19,11 @@
     "wpackagist-plugin/secure-db-connection": "^1.1",
     "humanmade/s3-uploads": "^2.0",
     "predis/predis": "^1.1",
-    "noeticblue/disable-frontend": "^1.0",
     "wpackagist-plugin/wp-mail-smtp": "^2.9",
     "wp-cli/wp-cli-bundle": "^2.5",
-    "wpackagist-plugin/contact-form-7": "^5.4"
+    "wpackagist-plugin/contact-form-7": "^5.4",
+    "noeticblue/disable-frontend": "^1.0",
+    "noeticblue/vercel-deploy": "^1.0"
   },
   "suggest": {
     "wpackagist-plugin/cloudflare-cache-purge": "Purges cached pages on CF.",
@@ -49,6 +50,18 @@
         "dist": {
           "type": "zip",
           "url": "https://github.com/NoeticBlue/disable-frontend/archive/refs/tags/1.0.0.zip"
+        }
+      }
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "noeticblue/vercel-deploy",
+        "type": "wordpress-plugin",
+        "version": "1.0.0",
+        "dist": {
+          "type": "zip",
+          "url": "https://github.com/NoeticBlue/vercel-deploy/archive/refs/tags/1.0.0.zip"
         }
       }
     },
